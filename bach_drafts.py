@@ -10,7 +10,12 @@ positions = {"center": (0,0)}
 
 #create image
 image_path = os.path.join(os.getcwd(),"trials","1_.jpg")
-image = visual.ImageStim(win,image=image_path,size=[500,500],pos=positions["center"])
+image = visual.ImageStim(win,image=image_path,size=[600,600],pos=[0,0])
+
+# center circle of clock hand
+cen_circle = visual.Circle(win=win, radius=7, lineColor='black', fillColor='black', pos=[10, 10])
+# clock arm
+cen_triangle = visual.Polygon(win=win, edges=3, size=[10, 240], lineColor='black', pos=[75, 10], fillColor='black', ori=90) 
 
 #initialize mouse
 mouse = event.Mouse() 
@@ -41,6 +46,9 @@ while True:
     wheel_movement = mouse.getWheelRel() [1]  
     # draw current image
     image.draw()
+    #clock arm
+    cen_circle.draw()
+    cen_triangle.draw()
     #show 
     win.flip()
     #mouse click
